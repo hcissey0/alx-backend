@@ -22,12 +22,12 @@ class MRUCache(BaseCaching):
 
         if key in self.cache_order:
             self.cache_order.remove(key)
-        self.cache_order.append(key)
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             k = self.cache_order.pop()
             del self.cache_data[k]
             print("DISCARD: {}".format(k))
+        self.cache_order.append(key)
 
     def get(self, key):
         """The get function"""
