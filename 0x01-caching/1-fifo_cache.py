@@ -17,11 +17,11 @@ class FIFOCache(BaseCaching):
         """This is the put fucntion to add a cache"""
         if key is not None and item is not None:
             self.cache_data[key] = item
-            self.queue.append(key)
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 k = self.queue.pop(0)
                 del self.cache_data[k]
                 print("DISCARD: {}".format(k))
+            self.queue.append(key)
 
     def get(self, key, item):
         """This is the get function to get a cache"""
