@@ -16,11 +16,11 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """This is the put fucntion to add a cache"""
         if key and item:
-            self.cache_data[key] = item
-            if len(self.cache_data) > self.MAX_ITEMS:
+            if len(self.cache_data) >= self.MAX_ITEMS:
                 k = self.queue.pop(0)
                 print("DISCARD: {}".format(k))
                 del self.cache_data[k]
+            self.cache_data[key] = item
             self.queue.append(key)
 
     def get(self, key, item):
