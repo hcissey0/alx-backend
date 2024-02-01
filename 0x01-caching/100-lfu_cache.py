@@ -18,22 +18,17 @@ class LFUCache(BaseCaching):
         """The put function"""
         if key is None or item is None:
             return
-
         self.cache_data[key] = item
-
-        if key in self.cache_usage:
-            self.cache_usage[key] += 1
-        else:
-            self.cache_usage[key] = 1
-
-        self.cache_order.append(key)
-
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             k = self.get_lfu_key()
             del self.cache_data[k]
             del self.cache_usage[k]
             self.cache_order.remove(k)
             print("DISCARD: {}".format(k))
+
+
+        self.cache_order.append(key)
+        self.cache_usage[key] = 1
 
     def get(self, key):
         """The get method"""
