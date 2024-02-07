@@ -61,7 +61,8 @@ def get_user(user_id: int):
     Returns:
         _type_: _description_
     """
-    return users.get(user_id)
+    login_id = request.args.get('login_as')
+    return users.get(int(login_id))
 
 
 @app.before_request
@@ -71,8 +72,8 @@ def before_request():
     Returns:
         _type_: _description_
     """
-    user_id = request.args.get('login_as')
-    g.user = get_user(int(user_id)) if user_id else None
+    user = get_user()
+    g.user = user
 
 
 @app.route("/")
