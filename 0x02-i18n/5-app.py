@@ -52,7 +52,7 @@ users = {
 }
 
 
-def get_user():
+def get_user() -> dict:
     """_summary_
 
     Args:
@@ -66,7 +66,7 @@ def get_user():
 
 
 @app.before_request
-def before_request():
+def before_request() -> None:
     """_summary_
 
     Returns:
