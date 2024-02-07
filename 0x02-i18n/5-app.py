@@ -37,7 +37,7 @@ def get_locale() -> Optional[str]:
     Returns:
         Optional[str]: The locale
     """
-    if 'locale'in request.args:
+    if 'locale' in request.args:
         locale = request.args.get('locale')
         if locale in app.config["LANGUAGES"]:
             return locale
