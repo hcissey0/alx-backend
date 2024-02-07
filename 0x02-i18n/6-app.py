@@ -37,11 +37,17 @@ def get_locale() -> Optional[str]:
     Returns:
         Optional[str]: The locale
     """
-    if 'locale'in request.args:
+    if 'locale' in request.args:
         locale = request.args.get('locale')
         if locale in app.config["LANGUAGES"]:
             return locale
-    if g.user and g.user['locale'[]]
+    if g.user and g.user.get('locale'):
+        locale = g.user.get('locale')
+        if locale and locale in app.config['LANGUAGES']:
+            return locale
+    locale = request.headers.get('locale')
+    if locale in app.config['LANGUAGES']:
+        return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
