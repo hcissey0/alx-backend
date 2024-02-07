@@ -7,7 +7,7 @@ from flask import (
     request,
     g,
 )
-from flask_babel import Babel, gettext
+from flask_babel import Babel
 from typing import (
     Text,
     Optional
@@ -46,9 +46,7 @@ def home() -> Text:
     Returns:
         Text: The html template file
     """
-    return render_template("3-index.html",
-                           title=gettext('home_title'),
-                           header=gettext('home_header'))
+    return render_template("3-index.html")
 
 
 if __name__ == "__main__":
