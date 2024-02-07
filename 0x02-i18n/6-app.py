@@ -41,6 +41,7 @@ def get_locale() -> Optional[str]:
         locale = request.args.get('locale')
         if locale in app.config["LANGUAGES"]:
             return locale
+    if g.user and g.user['locale'[]]
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
@@ -52,7 +53,7 @@ users = {
 }
 
 
-def get_user():
+def get_user(user_id: int):
     """_summary_
 
     Args:
