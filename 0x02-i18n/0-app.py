@@ -3,13 +3,14 @@
 
 from flask import Flask
 from flask import render_template
+from typing import Text
 
 
 app = Flask(__name__)
 
 
 @app.route('/')
-def home():
+def home() -> Text:
     return render_template('0-index.html')
 
 
