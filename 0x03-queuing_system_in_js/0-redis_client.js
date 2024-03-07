@@ -1,6 +1,3 @@
-// 0-redis_client.js
-
-// Import the necessary library (using ES6 import syntax)
 import redis from 'redis';
 
 
@@ -16,4 +13,3 @@ client.on('connect', () => {
 client.on('error', (err) => {
   console.error(`Redis client not connected to the server: ${err.message}`);
 });
-
